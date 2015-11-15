@@ -1,4 +1,62 @@
 <!DOCTYPE html>
 <html>
-
+    <head>
+    
+    </head>
+    <body>
+        
+    </body>
+    <script>
+        function Vector3D (x, y, z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+            this.length = function () {
+                return Math.sqrt(x * x + y * y + z * z);
+            };
+            this.add = function (v) {
+                return new Vector3D(x + v.x, y + v.y, z + v.z);
+            };
+            this.minus = function (v) {
+                return new Vector3D(x - v.x, y - v.y, z - v.z);
+            };
+            this.multiply = function (c) {
+                return new Vector3D(x * c, y * c, z * c);
+            };
+            this.getUnitVector = function () {
+                var l = this.length();
+                return new Vector3D(x / l, y / l, z / l);
+            };
+            this.dotProduct = function (v) {
+                return v.x * x + v.y * y + v.z * z;
+            };
+            this.perpencicularTo = function (v) {
+                return this.dotProduct(v) == 0;
+            };
+            this.parallelTo = function (v) {
+                return this.dotProduct(v) == Math.pow(this.length(), 2);
+            };
+            this.projOn = function (v) {
+                
+            };
+        }
+        
+        function Line (v1, v2) {
+            this.start = v1;
+            this.dir = v2;
+            this.perpendicularTo = function (l) {
+                return this.dir.perpenditularTo(l.dir);
+            };
+            this.parallelTo = function (l) {
+                return this.dir.parallelTo(l.dir);
+            };
+            
+        }
+        
+        function Segment (v1, v2) {
+            this.start = v1;
+            this.end = v2;
+            
+        }
+    </script>
 </html>
